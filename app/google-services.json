@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "72697434362",
+    "firebase_url": "https://memething-ab7a8.firebaseio.com",
+    "project_id": "memething-ab7a8",
+    "storage_bucket": "memething-ab7a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72697434362:android:a76e0e1043288a63a27943",
+        "android_client_info": {
+          "package_name": "com.shannon.memething"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72697434362-3gn7anb0e1a0on5c0it7glk5v98k56tp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa8rK8nPLzw11DqTturiz1pgDsxocwpyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72697434362-3gn7anb0e1a0on5c0it7glk5v98k56tp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "72697434362-4qqqr3g893mo26s2q15qquhng5ggnuag.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.shannon.MemeThing"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

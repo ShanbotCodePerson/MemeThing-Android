@@ -18,6 +18,15 @@ object UserController {
 
     // CRUD Methods
 
+    // Create a new user
+    fun createUser(email: String, screenName: String?, completion: (Boolean) -> Void) {
+        // Create the new user
+        var user = User(email, screenName)
+
+        // Save the user object to the cloud and save the documentID for editing purposes
+        TODO("save new user to cloud and get docID")
+    }
+
     // Read (fetch) the current user
     fun fetchUser(email: String, completion: (Boolean) -> Unit) {
         db.collection(userRecordType)
@@ -25,12 +34,10 @@ object UserController {
             .get()
             .addOnSuccessListener { documents ->
                 var document = documents.first()
-                Log.i("TESTME", "document is ${document.data}")
 
                 // Set up the user with the data fetched from the cloud
                 var user = User(email, null)
                 var success = user.setUpFromDictionary(document.data)
-                Log.i("TESTME", "success is ${success}")
 
                 // Save to the source of truth and return the success
                 currentUser = user

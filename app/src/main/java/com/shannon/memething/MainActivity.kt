@@ -14,6 +14,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    // to do - replace toasts with alerts
+
     var auth: FirebaseAuth = Firebase.auth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Sent an email to $email. Please allow a few minutes for the email to arrive", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
-                Log.i("ERROR", it.toString())
+                Log.i("ERROR", "Error in resetPasswordButtonTapped in MainActivity: ${it.toString()}")
                 Toast.makeText(applicationContext, "Error sending email to $email - please try again later", Toast.LENGTH_SHORT).show()
             }
     }
@@ -82,9 +84,11 @@ class MainActivity : AppCompatActivity() {
 
         if (email.isNullOrEmpty()) {
             Toast.makeText(this, "You must enter a valid email address", Toast.LENGTH_SHORT).show()
+            return
         }
         if (password.isNullOrEmpty()) {
             Toast.makeText(this, "You must enter a password", Toast.LENGTH_SHORT).show()
+            return
         }
 
         if (loginTabLayout.selectedTabPosition == 0) { signUp(email, password) }
@@ -155,11 +159,44 @@ class MainActivity : AppCompatActivity() {
 
     // Check that all the fields are valid and create a new user
     private fun signUp(email: String, password: String) {
+        // Make sure the screen name contains an actual string
+        var screenName = loginScreenNameTextField.text.toString()
+        if (screenName.isNullOrEmpty()) {
+            Toast.makeText(this, "You must enter a username", Toast.LENGTH_SHORT).show()
+            return
+        }
 
+        // Make sure the passwords match
+        if (!password.equals(loginConfirmPasswordTextField.text.toString())) {
+            Toast.makeText(this, "Passwords do not match - please try again", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Create the user and send the notification email
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnSuccessListener {
+                // Send an email to verify the user's email address
+                auth.currentUser?.sendEmailVerification()
+                    ?.addOnSuccessListener {
+                        // Finish setting up the account
+                        setUpUser(email, screenName)
+
+                        // Present an alert asking them to check their email
+                        Toast.makeText(applicationContext, "An email has been sent to $email - please verify your email", Toast.LENGTH_SHORT).show()
+                    }
+                    ?.addOnFailureListener {
+                        Log.i("ERROR", "Error in signUp() in MainActivity: ${it.toString()}")
+                        Toast.makeText(applicationContext, "Error creating account - please try again later", Toast.LENGTH_SHORT).show()
+                    }
+            }
+            .addOnFailureListener {
+                Log.i("ERROR", "Error in signUp() in MainActivity: ${it.toString()}")
+                Toast.makeText(applicationContext, "Error creating account - please try again later", Toast.LENGTH_SHORT).show()
+            }
     }
 
     // Once a user has verified their email, finish completing their account
-    private fun setUpUser() {
+    private fun setUpUser(email: String, name: String) {
 
     }
 

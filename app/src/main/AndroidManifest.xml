@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FriendsActivity"></activity>
+        <activity android:name=".FriendsActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".MainMenuActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainMenuActivity" android:theme="@style/FullScreen" />
+        <activity android:name=".MainActivity" android:theme="@style/FullScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

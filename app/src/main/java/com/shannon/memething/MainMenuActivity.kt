@@ -21,11 +21,11 @@ class MainMenuActivity : AppCompatActivity() {
     }
 
     fun gamesButtonTapped(view: View) {
-
     }
 
     fun friendsButtonTapped(view: View) {
-
+        intent = Intent(this, FriendsActivity::class.java)
+        startActivity(intent)
     }
 
     fun profileButtonTapped(view: View) {

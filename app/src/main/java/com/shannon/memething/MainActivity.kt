@@ -1,10 +1,10 @@
 package com.shannon.memething
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayout
@@ -12,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -53,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         resetPasswordText.visibility = View.GONE
 
         loginSignUpButton.text = getString(R.string.sign_up)
+        loadingIconView.bringToFront()
     }
 
     private fun toggleToLogin() {
@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         resetPasswordText.visibility = View.VISIBLE
 
         loginSignUpButton.text = getString(R.string.login)
+        loadingIconView.bringToFront()
     }
 
     // Actions
@@ -113,14 +114,29 @@ class MainActivity : AppCompatActivity() {
 
     // Try to log the user in
     private fun autoLogin() {
+        // Start the loading icon
+        getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        loadingIconView.bringToFront()
+        loadingIconView.visibility = View.VISIBLE
+
         auth.currentUser?.let { user ->
 
             if (!user.isEmailVerified) {
+                // Hide the loading icon
+                loadingIconView.visibility = View.GONE
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
                 return
             }
 
             user.email?.let { email ->
                 UserController.fetchUser(email) { success ->
+                    // Hide the loading icon
+                    loadingIconView.visibility = View.GONE
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                    
                     // If the user was fetched correctly, transition to the main menu
                     if (success) { toMainMenu() }
                     else {

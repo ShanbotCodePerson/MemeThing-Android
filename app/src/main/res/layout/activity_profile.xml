@@ -29,8 +29,6 @@
 
         </androidx.cardview.widget.CardView>
 
-
-
     <TextView
         android:id="@+id/editProfilePhotoButton"
         android:layout_width="wrap_content"

@@ -7,6 +7,36 @@
     android:background="@drawable/background_gradient"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loadingIconView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#33000000"
+        tools:visibility="gone">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loadingIconSquare"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ProgressBar
+                android:id="@+id/loadingIcon"
+                style="@android:style/Widget.ProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#B3000000"
+                android:padding="14dp" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -172,4 +202,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,8 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/Cyan</item>
         <item name="colorPrimaryDark">#00B5A6</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@color/RedAccent</item>
+        <item name="colorAccent">@color/DarkBlue</item>
         <item name="actionBarTheme">@style/AppBaseTheme.Toolbar</item>
     </style>
 
@@ -17,7 +16,7 @@
     <style name="FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/Cyan</item>
         <item name="colorPrimaryDark">#00B5A6</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/DarkBlue</item>
     </style>
 
 </resources>

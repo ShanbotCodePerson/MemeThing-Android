@@ -6,22 +6,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.friends_item_row.view.*
 
-class FriendRecyclerAdapter(private val friends: ArrayList<User>) : RecyclerView.Adapter<FriendRecyclerAdapter.FriendItemHolder>()  {
+class ThreeLabelsRecyclerAdapter(private val friends: ArrayList<User>) : RecyclerView.Adapter<ThreeLabelsRecyclerAdapter.CellItemHolder>()  {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendRecyclerAdapter.FriendItemHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThreeLabelsRecyclerAdapter.CellItemHolder {
         val inflatedView = parent.inflate(R.layout.friends_item_row, false)
-        return FriendItemHolder(inflatedView)
+        return CellItemHolder(inflatedView)
     }
 
     override fun getItemCount(): Int {
         return friends.count()
     }
 
-    override fun onBindViewHolder(holder: FriendRecyclerAdapter.FriendItemHolder, position: Int) {
+    override fun onBindViewHolder(holder: ThreeLabelsRecyclerAdapter.CellItemHolder, position: Int) {
         holder.bindViews(friends[position])
     }
 
-    class FriendItemHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
+    class CellItemHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
         private var view: View = v
 
         init {

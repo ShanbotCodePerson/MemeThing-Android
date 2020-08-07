@@ -20,6 +20,12 @@ class FriendsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_friends)
 
+        setUpViews()
+    }
+
+    fun setUpViews() {
+        title = "Friends"
+
         linearLayoutManager = LinearLayoutManager(this)
         friendsRecyclerView.layoutManager = linearLayoutManager
 

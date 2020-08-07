@@ -1,13 +1,23 @@
 package com.shannon.memething
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_profile.*
 
 class ProfileActivity : AppCompatActivity() {
+
+    // Properties
+
+    var auth: FirebaseAuth = Firebase.auth
+
+    // Lifecycle Methods
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,6 +25,8 @@ class ProfileActivity : AppCompatActivity() {
 
         setUpViews()
     }
+
+    // Set Up UI
 
     fun setUpViews() {
         title = "Profile"
@@ -28,6 +40,8 @@ class ProfileActivity : AppCompatActivity() {
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         profilePhotoCardView.radius = (displayMetrics.widthPixels * 0.6).toFloat()
     }
+
+    // Actions
 
     fun editProfilePhotoButtonTapped(view: View) {
 
@@ -50,6 +64,11 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun signOutButtonTapped(view: View) {
+        // Sign the user out
+        auth.signOut()
 
+        // Return to the login screen
+        intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

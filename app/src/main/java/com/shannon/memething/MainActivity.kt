@@ -18,7 +18,11 @@ class MainActivity : AppCompatActivity() {
 
     // to do - replace toasts with alerts
 
+    // Properties
+
     var auth: FirebaseAuth = Firebase.auth
+
+    // Lifecyle Methods
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +45,8 @@ class MainActivity : AppCompatActivity() {
         autoLogin()
     }
 
+    // Helper Methods
+
     private fun toggleToSignUp() {
         loginScreenNameTextField.visibility = View.VISIBLE
         loginConfirmPasswordTextField.visibility = View.VISIBLE
@@ -56,6 +62,8 @@ class MainActivity : AppCompatActivity() {
 
         loginSignUpButton.text = getString(R.string.login)
     }
+
+    // Actions
 
     fun resetPasswordButtonTapped(view: View) {
         // TO DO - can present a text field alert if they haven't already entered an email
@@ -96,6 +104,12 @@ class MainActivity : AppCompatActivity() {
         if (loginTabLayout.selectedTabPosition == 0) { signUp(email, password) }
         else { login(email, password) }
     }
+
+    override fun onBackPressed() {
+        // Do nothing - the user should not be able to navigate back to the rest of the app from the login page
+    }
+
+    // Login and Sign Up Methods
 
     // Try to log the user in
     private fun autoLogin() {
@@ -201,6 +215,8 @@ class MainActivity : AppCompatActivity() {
     private fun setUpUser(email: String, name: String) {
 
     }
+
+    // Navigation
 
     // Transition to the main menu once the user has signed up or logged in
     private fun toMainMenu() {

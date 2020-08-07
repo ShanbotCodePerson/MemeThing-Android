@@ -12,7 +12,7 @@ class FriendsActivity : AppCompatActivity() {
     // Properties
 
     private lateinit var linearLayoutManager: LinearLayoutManager
-    private lateinit var adapter: FriendRecyclerAdapter
+    private lateinit var adapter: ThreeLabelsRecyclerAdapter
 
     // Lifecyle methods
 
@@ -35,7 +35,7 @@ class FriendsActivity : AppCompatActivity() {
                 Log.i("ERROR", "Error in fetchUsersFriends in FriendsActivity")
                 Toast.makeText(applicationContext, "Unable to fetch data from cloud", Toast.LENGTH_SHORT).show()
             } else {
-                adapter = FriendRecyclerAdapter(users)
+                adapter = ThreeLabelsRecyclerAdapter(users)
                 friendsRecyclerView.adapter = adapter
             }
         }

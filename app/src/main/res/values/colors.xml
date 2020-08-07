@@ -9,4 +9,6 @@
     <color name="DarkBlue">#0433FF</color>
     <color name="Cyan">#00FDFF</color>
     <color name="PurpleAccent">#413C58</color>
+    <color name="PurpleAccent60pct">#99413C58</color>
+    <color name="RedAccent">#FF371E</color>
 </resources>

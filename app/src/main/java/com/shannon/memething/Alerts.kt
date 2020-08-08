@@ -13,8 +13,9 @@ object Alerts {
         // Create the alert builder
         val dialogBuilder = AlertDialog.Builder(context)
 
-        // Set up the message and buttons
+        // Set up the title, message, and buttons
         dialogBuilder
+            .setTitle(title)
             .setMessage(message)
             .setCancelable(false)
             .setNegativeButton(buttonText, DialogInterface.OnClickListener {
@@ -23,9 +24,6 @@ object Alerts {
 
         // Create the dialog box
         val alert = dialogBuilder.create()
-
-        // Set the title of the alert
-        alert.setTitle(title)
 
         // Show the alert
         alert.show()
@@ -37,8 +35,9 @@ object Alerts {
         // Create the alert builder
         val dialogBuilder = AlertDialog.Builder(context)
 
-        // Set up the message and buttons
+        // Set up the title, message, and buttons
         dialogBuilder
+            .setTitle(title)
             .setMessage(message)
             .setCancelable(false)
             .setPositiveButton(yesButtonText, DialogInterface.OnClickListener { dialog, _ ->
@@ -51,9 +50,6 @@ object Alerts {
 
         // Create the dialog box
         val alert = dialogBuilder.create()
-
-        // Set the title of the alert
-        alert.setTitle(title)
 
         // Show the alert
         alert.show()

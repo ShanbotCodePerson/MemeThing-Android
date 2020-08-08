@@ -52,7 +52,21 @@ class ProfileActivity : AppCompatActivity() {
     // Actions
 
     fun editProfilePhotoButtonTapped(view: View) {
+        // Create an alert with options to pick a photo, take a photo, draw a photo, or cancel
+        val dialogBuilder = AlertDialog.Builder(this)
 
+        // Set up the title, message, and buttons
+        dialogBuilder
+            .setTitle(title)
+            .setMessage("Choose a new profile photo!")
+            .setIcon(R.drawable.profile_photo)
+            .setCancelable(false)
+
+        // Create the dialog box
+        val alert = dialogBuilder.create()
+
+        // Show the alert
+        alert.show()
     }
 
     fun resetPasswordButtonTapped(view: View) {
@@ -64,7 +78,11 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun editScreenNameButtonTapped(view: View) {
+        showTextFieldAlert("Edit Screen Name", "Enter a new username that will appear on the screen to your friends",
+            "Enter Screen Name Here", true) {
 
+            Toast.makeText(applicationContext, "Alert worked and text entered was $it", Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun pointsInfoButtonTapped(view: View) {
@@ -85,7 +103,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     // A text field alert to get input from the user
-    fun showTextFieldAlert(title: String, message: String, hint: String, isPassword: Boolean = false,
+    fun showTextFieldAlert(title: String, message: String, hint: String? = null, isPassword: Boolean = false,
                            confirmButtonText: String = "Confirm", cancelButtonText: String = "Cancel",
                            confirmButtonFunction: (String) -> Unit) {
         // Create the alert builder
@@ -95,12 +113,13 @@ class ProfileActivity : AppCompatActivity() {
         val li = LayoutInflater.from(this)
         val textFieldView = li.inflate(R.layout.alert_with_text_field, null)
         val textField = textFieldView.findViewById<EditText>(R.id.alertTextField)
-        textField.hint = hint
+        hint?.let { textField.hint = it }
         if (isPassword) { textField.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD }
         dialogBuilder.setView(textFieldView)
 
-        // Set up the buttons
+        // Set up the title, message, and buttons
         dialogBuilder
+            .setTitle(title)
             .setMessage(message)
             .setCancelable(false)
             .setPositiveButton(confirmButtonText, DialogInterface.OnClickListener { dialog, _ ->
@@ -112,9 +131,6 @@ class ProfileActivity : AppCompatActivity() {
 
         // Create the dialog box
         val alert = dialogBuilder.create()
-
-        // Set the title of the alert
-        alert.setTitle(title)
 
         // Show the alert
         alert.show()

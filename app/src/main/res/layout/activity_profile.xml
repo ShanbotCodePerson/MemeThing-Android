@@ -11,13 +11,17 @@
         android:id="@+id/profilePhotoCardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:cardCornerRadius="0dp"
         app:layout_constraintDimensionRatio="W,1:1"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.6">
+        app:layout_constraintWidth_percent="0.6"
+        app:cardCornerRadius="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/profilePhotoImageView"
@@ -27,32 +31,30 @@
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/default_profile" />
 
-        </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/editProfilePhotoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="12dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/edit_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/bubblegum_sans"
+                android:onClick="editProfilePhotoButtonTapped"
+                android:paddingLeft="10dp"
+                android:paddingTop="4dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="3dp"
+                android:text="@string/edit"
+                android:textColor="#4C4C4C"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/editProfilePhotoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_button"
-        android:clickable="true"
-        android:fontFamily="@font/bubblegum_sans"
-        android:onClick="editProfilePhotoButtonTapped"
-        android:paddingLeft="10dp"
-        android:paddingTop="4dp"
-        android:paddingRight="12dp"
-        android:paddingBottom="3dp"
-        android:text="@string/edit"
-        android:textColor="#4C4C4C"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/profilePhotoCardView"
-        app:layout_constraintEnd_toEndOf="@+id/profilePhotoCardView"
-        app:layout_constraintStart_toStartOf="@+id/profilePhotoCardView"
-        app:layout_constraintTop_toTopOf="@+id/profilePhotoCardView"
-        app:layout_constraintVertical_bias="0.95"
-        android:paddingEnd="12dp"
-        android:paddingStart="10dp"
-        android:focusable="true" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/profileEmailLabel"

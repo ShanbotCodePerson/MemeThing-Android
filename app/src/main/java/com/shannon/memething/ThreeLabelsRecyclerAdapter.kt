@@ -4,12 +4,12 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.friends_item_row.view.*
+import kotlinx.android.synthetic.main.three_labels_item_row.view.*
 
 class ThreeLabelsRecyclerAdapter(private val friends: ArrayList<User>) : RecyclerView.Adapter<ThreeLabelsRecyclerAdapter.CellItemHolder>()  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThreeLabelsRecyclerAdapter.CellItemHolder {
-        val inflatedView = parent.inflate(R.layout.friends_item_row, false)
+        val inflatedView = parent.inflate(R.layout.three_labels_item_row, false)
         return CellItemHolder(inflatedView)
     }
 
